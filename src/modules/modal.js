@@ -3,7 +3,7 @@ import { animate } from "./helpers";
 const modal = () => {
   const modalWindows = document.querySelector(".modal-callback");
   const modalBackground = document.querySelector(".modal-overlay");
-  const modalBtn = document.querySelectorAll(".callback-btn");
+  const blockModal = document.querySelectorAll(".fancyboxModal");
 
   const modalDisplay = (value) => {
     if (value) {
@@ -15,7 +15,7 @@ const modal = () => {
     }
   };
 
-  modalBtn.forEach((btn) => {
+  blockModal.forEach((btn) => {
     btn.addEventListener("click", () => {
       modalDisplay(true);
       animate({

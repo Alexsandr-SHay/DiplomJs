@@ -1,5 +1,8 @@
 const smoothScrolling = () => {
   const smoothLinks = document.querySelectorAll("a[href^='#']");
+  const scrollTopBtn = document.querySelector(".up");
+
+  //Плавный скролл по ссылкам https://only-to-top.ru/blog/coding/2018-06-08-plavnyj-skroll-do-elementa.html
 
   for (let smoothLink of smoothLinks) {
     smoothLink.addEventListener("click", (e) => {
@@ -13,16 +16,11 @@ const smoothScrolling = () => {
     });
   }
 
-  // Получаем кнопку по ID
-  const scrollTopBtn = document.querySelector(".up");
-  console.log(scrollTopBtn);
-
-  // Добавляем событие на прокрутку окна
+  // Кнопка перемещения на вверх сайта https://myrusakov.ru/js-scroll-to-top-of-web-page-p1.html
   window.onscroll = () => {
     toggleScrollTopBtn();
   };
 
-  // Функция для отображения или скрытия кнопки
   const toggleScrollTopBtn = () => {
     if (
       document.body.scrollTop > 300 ||
@@ -34,11 +32,10 @@ const smoothScrolling = () => {
     }
   };
 
-  // Добавляем обработчик события для плавной прокрутки наверх
   scrollTopBtn.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Плавная прокрутка
+      behavior: "smooth",
     });
   });
 };
