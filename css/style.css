@@ -210,7 +210,7 @@ a.absolute {
 }
 .button {
   display: inline-block;
-  text-decoration: none !important;
+  /* text-decoration: none !important; */
   color: #fff !important;
   background: #e9bb26;
   font-size: 18px;
@@ -1238,3 +1238,28 @@ video#video_background {
   }
 }
 /**** /. services section *****/
+
+:root {
+  --sk-size: 40px;
+  --sk-color: hsl(0, 0%, 6%);
+}
+
+.sk-plane {
+  margin: auto;
+  width: var(--sk-size);
+  height: var(--sk-size);
+  background-color: var(--sk-color);
+  animation: sk-plane 1.2s infinite ease-in-out;
+}
+
+@keyframes sk-plane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}

@@ -667,13 +667,14 @@
       <div class="title-h2">Мы перезвоним через 5 минут!</div>
       <br />
       <div class="rf">
-        <form action="" name="form-callback">
+        <form action="" name="form-callback" id="form">
           <div class="form-group">
             <input
               type="text"
               name="fio"
-              class="form-control"
+              class="form-control form-name"
               placeholder="Ваше имя"
+              required
             />
           </div>
 
@@ -683,6 +684,7 @@
               name="tel"
               class="form-control tel required"
               placeholder="Телефон*"
+              required
             />
           </div>
           <p>
@@ -690,11 +692,7 @@
             <span class="f12">- поля, обязательные для заполнения</span>
           </p>
           <div>
-            <input
-              type="submit"
-              class="button btn feedback"
-              value="Отправить"
-            />
+            <button class="button btn feedback" type="submit">Отправить</button>
           </div>
         </form>
       </div>
@@ -711,7 +709,7 @@
             <input
               type="text"
               name="fio"
-              class="form-control"
+              class="form-control form-name"
               placeholder="Ваше имя"
             />
           </div>
@@ -768,7 +766,7 @@
             <input
               name="fio"
               type="text"
-              class="form-control required"
+              class="form-control form-name required"
               placeholder="Ваше имя *"
             />
           </div>
