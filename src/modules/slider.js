@@ -1,32 +1,66 @@
 const slider = () => {
-  const topSlider = document.querySelectorAll(".top-slider");
-  const itemRelative = document.querySelectorAll(".item");
-  const text = document.querySelector(".text");
-  const title = document.querySelector("h1");
+  const allBlock = document.querySelector(".top-slider");
+  const collectionSliders = document.querySelectorAll(".item");
+  const dots = document.querySelectorAll(".dot");
+  let cuurentSlide = 0;
+  let interval;
 
-  itemRelative[0].style.display = "block";
-  itemRelative[0].style.height = "600px";
-  itemRelative[2].style.display = "none";
-  itemRelative[1].style.display = "none";
+  const autoSlide = () => {
+    collectionSliders[cuurentSlide].style.display = "none";
+    dots[cuurentSlide].classList.remove("dot-active");
+    cuurentSlide++;
+    if (cuurentSlide >= collectionSliders.length) {
+      cuurentSlide = 0;
+    }
+    collectionSliders[cuurentSlide].style.display = "block";
+    dots[cuurentSlide].classList.add("dot-active");
+  };
 
-  setTimeout(() => {
-    itemRelative[0].style.display = "none";
-    itemRelative[1].style.display = "block";
-    itemRelative[1].style.height = "600px";
-  }, 1000);
+  const startSlide = () => {
+    interval = setInterval(autoSlide, 3000);
+  };
 
-  setTimeout(() => {
-    itemRelative[1].style.display = "none";
-    itemRelative[2].style.display = "block";
-    itemRelative[2].style.height = "600px";
-  }, 2000);
+  const stopSlide = () => {
+    clearInterval(interval);
+  };
 
-  //   itemRelative[0].classList.remove("relative");
-  //   itemRelative[0].classList.remove("item");
-  //   itemRelative[0].style.background = "none";
-  //   itemRelative[0].style.height = "1px";
-  //   itemRelative[1].style.height = "100px";
-  //   title.style.position = "absolute";
-  //   title.style.opacity = 0;
+  allBlock.addEventListener("click", (e) => {
+    collectionSliders[cuurentSlide].style.display = "none";
+    dots[cuurentSlide].classList.remove("dot-active");
+
+    e.preventDefault();
+    if (e.target.classList.contains("dot")) {
+      dots.forEach((dot, index) => {
+        if (e.target === dot) {
+          cuurentSlide = index;
+        }
+      });
+    }
+
+    collectionSliders[cuurentSlide].style.display = "block";
+    dots[cuurentSlide].classList.add("dot-active");
+  });
+
+  allBlock.addEventListener(
+    "mouseenter",
+    (e) => {
+      if (e.target.matches(".dot")) {
+        stopSlide();
+      }
+    },
+    true
+  );
+
+  allBlock.addEventListener(
+    "mouseleave",
+    (e) => {
+      if (e.target.matches(".dot")) {
+        startSlide();
+      }
+    },
+    true
+  );
+
+  startSlide();
 };
 export default slider;
