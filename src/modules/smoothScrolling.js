@@ -2,7 +2,16 @@ const smoothScrolling = () => {
   const smoothLinks = document.querySelectorAll("a[href^='#']");
   const scrollTopBtn = document.querySelector(".up");
 
-  //Плавный скролл по ссылкам https://only-to-top.ru/blog/coding/2018-06-08-plavnyj-skroll-do-elementa.html
+  const toggleScrollTopBtn = () => {
+    if (
+      document.body.scrollTop > 300 ||
+      document.documentElement.scrollTop > 300
+    ) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  };
 
   for (let smoothLink of smoothLinks) {
     smoothLink.addEventListener("click", (e) => {
@@ -16,23 +25,11 @@ const smoothScrolling = () => {
     });
   }
 
-  // Кнопка перемещения на вверх сайта https://myrusakov.ru/js-scroll-to-top-of-web-page-p1.html
   window.onscroll = () => {
     toggleScrollTopBtn();
   };
 
-  const toggleScrollTopBtn = () => {
-    if (
-      document.body.scrollTop > 300 ||
-      document.documentElement.scrollTop > 300
-    ) {
-      scrollTopBtn.style.display = "block";
-    } else {
-      scrollTopBtn.style.display = "none";
-    }
-  };
-
-  scrollTopBtn.addEventListener("click", function () {
+  scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",

@@ -2,6 +2,14 @@ const dataEntryForm = () => {
   const formName = document.querySelectorAll(".form-name");
   const formPhone = document.querySelectorAll(".tel");
 
+  const editingLine = (value) => {
+    value = value.replace(/^[\s\-]+/g, "");
+    value = value.replace(/[\s\-]+$/g, "");
+    value = value.replace(/\s{2,}/g, " ");
+    value = value.replace(/\-{2,}/g, "-");
+    return value;
+  };
+
   formName.forEach((e) => {
     e.addEventListener("input", (event) => {
       event.target.value = event.target.value.replace(/[^А-Яа-я- ]/, "");
@@ -24,14 +32,6 @@ const dataEntryForm = () => {
       event.target.value = editingLine(event.target.value);
     });
   });
-
-  const editingLine = (value) => {
-    value = value.replace(/^[\s\-]+/g, "");
-    value = value.replace(/[\s\-]+$/g, "");
-    value = value.replace(/\s{2,}/g, " ");
-    value = value.replace(/\-{2,}/g, "-");
-    return value;
-  };
 };
 
 export default dataEntryForm;
