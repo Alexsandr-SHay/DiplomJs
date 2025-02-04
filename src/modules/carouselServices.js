@@ -3,7 +3,6 @@ import { Navigation } from "swiper/modules";
 
 const carouselServices = () => {
   const swiper = new Swiper(".swiper", {
-    // Optional parameters
     loop: true,
     modules: [Navigation],
     slidesPerView: 2,

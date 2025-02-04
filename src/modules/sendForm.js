@@ -6,7 +6,6 @@ const sendForm = ({ formId }) => {
 
   const sendData = (data) => {
     return fetch("https://jsonplaceholder.typicode.com/posts", {
-      //./server.php
       method: "POST",
       body: JSON.stringify(data),
       headers: {

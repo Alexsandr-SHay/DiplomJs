@@ -35,5 +35,7 @@ const smoothScrolling = () => {
       behavior: "smooth",
     });
   });
+
+  toggleScrollTopBtn();
 };
 export default smoothScrolling;
